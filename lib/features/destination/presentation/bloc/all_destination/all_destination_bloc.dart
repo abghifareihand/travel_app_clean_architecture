@@ -12,7 +12,7 @@ class AllDestinationBloc
   AllDestinationBloc(this.useCase) : super(AllDestinationInitial()) {
     on<GetAllDestination>((event, emit) async {
       emit(AllDestinationLoading());
-      final result = await useCase.call();
+      final result = await useCase();
       result.fold(
         (error) => emit(AllDestinationError(error.message)),
         (success) => emit(AllDestinationSuccess(success)),

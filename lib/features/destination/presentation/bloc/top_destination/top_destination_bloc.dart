@@ -12,7 +12,7 @@ class TopDestinationBloc
   TopDestinationBloc(this.useCase) : super(TopDestinationInitial()) {
     on<GetTopDestination>((event, emit) async {
       emit(TopDestinationLoading());
-      final result = await useCase.call();
+      final result = await useCase();
       result.fold(
         (error) => emit(TopDestinationError(error.message)),
         (success) => emit(TopDestinationSuccess(success)),

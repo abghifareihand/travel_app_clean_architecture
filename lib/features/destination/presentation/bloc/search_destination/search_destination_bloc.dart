@@ -12,7 +12,7 @@ class SearchDestinationBloc extends Bloc<SearchDestinationEvent, SearchDestinati
   SearchDestinationBloc(this.useCase) : super(SearchDestinationInitial()) {
     on<SearchDestination>((event, emit) async {
       emit(SearchDestinationLoading());
-      final result = await useCase.call(event.query);
+      final result = await useCase(event.query);
       result.fold(
         (error) => emit(SearchDestinationError(error.message)),
         (success) => emit(SearchDestinationSuccess(success)),
