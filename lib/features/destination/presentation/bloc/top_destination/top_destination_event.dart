@@ -1,6 +1,6 @@
 part of 'top_destination_bloc.dart';
 
-sealed class TopDestinationEvent extends Equatable {
+abstract class TopDestinationEvent extends Equatable {
   const TopDestinationEvent();
 
   @override
